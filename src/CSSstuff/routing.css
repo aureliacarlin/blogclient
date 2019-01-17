@@ -1,0 +1,39 @@
+.jumbo {
+    margin-top: 15%;
+    background-color: #e9ecef;
+}
+
+.jumbotron {
+    background-color: red;
+}
+.jumboCon {
+    /* background-color: pink; */
+}
+
+.navs {
+     background-color: #e9ecef; 
+}
+
+.home {
+    background-color: plum;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    border: none;
+}
+
+.home:hover{
+    
+    background-color: rgb(156, 103, 153);
+}
+
+.home:focus {
+    outline: none !important;
+}
+
+
+
+
+
+
+
