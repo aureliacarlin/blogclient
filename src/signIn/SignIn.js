@@ -45,7 +45,7 @@ export default class SignIn extends Component {
             <div>
                 <Container>
                     <Row>
-                        <Col md='12' md={{size: 6, offset: 3}}>
+                        <Col md={{size: 6, offset: 3}}>
                             <Form onSubmit={this.handleSubmit}>
                                 <FormGroup>
                                     <Label for="userEmail"></Label>

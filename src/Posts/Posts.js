@@ -1,9 +1,4 @@
 import React, {Component} from 'react';
-import {
-    Route,
-    Switch,
-    Link
-} from 'react-router-dom'
 import "../CSSstuff/posts.css";
 import {Form, FormGroup, Label, Input, Container, Row, Col, Button} from 'reactstrap';
 
@@ -37,7 +32,7 @@ class Posts extends Component {
             
          }).then((response) => response.json())
         .then((data) => {
-             console.log(data)
+            //  console.log(data)
              this.setState({
                  title: '',
                  content: ''
@@ -47,13 +42,29 @@ class Posts extends Component {
          window.location.href ="/"
     }
 
+    postIt = (event) => {
+        fetch(`http://localhost:4000/blog/new`, {
+            method: 'POST',
+            body: JSON.stringify(this.state),
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': this.props.sessionToken
+            })
+        }).then((response) => response.json())
+        .then((data) => {
+            // console.log(data)
+        })
+        event.preventDefault();
+        window.location.href ="/allposts";
+    }
+
     render() {
         return (
             <div>
                 <Container>
                     <Row>
-                        <Col md="3" md={{size: 6, offset: 3}}>
-                            <Form onSubmit={this.drafting}>
+                        <Col md={{size: 6, offset: 3}}>
+                            <Form>
                                 <FormGroup>
                                     <Label for='title'>Title</Label> 
                                     <Input id='title' type='text' name='title' placeholder='enter title' onChange={this.saveDraft}></Input>
@@ -61,7 +72,8 @@ class Posts extends Component {
                                 <FormGroup>
                                     <textarea type="textarea" id='post' name='content' placeholder='start post...' className="content" onChange={this.saveDraft}></textarea>
                                 </FormGroup>
-                                <Button type="submit">Save as Draft</Button>
+                                <Button type="submit" onClick={this.drafting}>Save as Draft</Button>
+                                <Button type="submit" onClick={this.postIt}>Post</Button>
                             </Form>
                          </Col>
                     </Row>

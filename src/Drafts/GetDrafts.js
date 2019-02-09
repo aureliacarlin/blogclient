@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {Button} from 'reactstrap';
 import DisplayDrafts from './DisplayDrafts';
 import Update from './Update';
+import DeleteDraft from './DeleteDraft';
 
 export default class GetDrafts extends Component {
     constructor(props){
@@ -9,7 +9,9 @@ export default class GetDrafts extends Component {
         this.state = {
             datas: [],
             update: false,
-            postToUpdate: {}
+            postToUpdate: {},
+            delete: false,
+            ptd: {}
         }
     }
 
@@ -28,7 +30,7 @@ export default class GetDrafts extends Component {
             (response) => response.json()
         ).then(
             (data) => {
-                console.log(data)
+                // console.log(data)
                  this.setState({
                     datas: data
                  })
@@ -37,7 +39,7 @@ export default class GetDrafts extends Component {
             }
 
             updatePressed = (event, properties) => {
-                console.log(properties)
+                // console.log(properties)
                  this.setState({
                      update: true,
                      postToUpdate: properties
@@ -45,8 +47,16 @@ export default class GetDrafts extends Component {
                 
             }
 
+            deletePressed = (event, properties) => {
+                // console.log(properties)
+                this.setState({
+                    delete: true,
+                    ptd: properties
+                })
+            }
+
             sendUpdate = (event, post) => {
-                console.log("All the things!!")
+                // console.log("All the things!!")
                 fetch(`http://localhost:4000/draft/update/${post.id}`, {
                     method: 'PUT',
                     body: JSON.stringify(post),
@@ -72,6 +82,9 @@ export default class GetDrafts extends Component {
             })
             .then((res) => {
                 this.handleDraft();
+                this.setState({
+                    delete: false
+                })
             })
         }
 
@@ -85,19 +98,23 @@ export default class GetDrafts extends Component {
                 })
             }).then((response) => response.json())
             .then((data) => {
-                console.log(data)
+                // console.log(data)
             })
-            event.preventDefault()
-         window.location.href ="/"
+            event.preventDefault();
+            this.deletePressed(event, post);
         }
+
 
         
     render(){
         return(
             <div>
-                <DisplayDrafts  post={this.postIt} delete={this.deletePost} propDraft={this.state.datas} update={this.updatePressed} />
+                <DisplayDrafts  post={this.postIt} delete={this.deletePost} propDraft={this.state.datas} update={this.updatePressed} draft={this.deletePressed}/>
                 {
                     this.state.update ? <Update  close={this.handleDraft} sendUpdate={this.sendUpdate} post={this.state.postToUpdate}/> : <div></div>
+                }
+                {
+                    this.state.delete ? <DeleteDraft details={this.state.ptd} delPost={this.deletePost}/> : <div></div>
                 }
             </div>
         )

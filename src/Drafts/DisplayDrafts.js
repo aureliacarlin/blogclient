@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Table, Button} from 'reactstrap';
+import { Button} from 'reactstrap';
 import "../CSSstuff/displayDrafts.css";
 
 
@@ -27,20 +27,8 @@ export default class DisplayDrafts extends Component {
                                             <button  className="updateing"  id={properties.id} onClick={event => this.props.update(event, properties)}><i className="fas fa-pencil-alt"></i></button>
                                          <Button onClick={event => this.props.delete(event, properties.id)} color="danger"><i className="fas fa-trash-alt"></i></Button>
                                          <Button onClick={event => this.props.post(event, properties)} type="submit">Post</Button>
-                                        </div>
+                                        </div> 
                                     </div>
-                                    // <tr key={properties.id}>
-                                    //     <td>{properties.id}</td>
-                                    //     <td>{properties.title}</td>
-                                    //     <td>{properties.content}</td>
-                                    //     <td>{properties.author}</td>
-                                    // <td>
-                                    //     <Button className='update' id={properties.id} onClick={event => this.props.update(event, properties)}>Update</Button>
-                                    //     <Button>Save Update</Button>
-                                    //     <Button>Post</Button>
-                                    //     <Button color="danger">Delete</Button>
-                                    // </td>
-                                    // </tr>
                                 )
                             })
                         }

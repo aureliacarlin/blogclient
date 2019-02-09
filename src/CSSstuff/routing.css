@@ -31,6 +31,21 @@
     outline: none !important;
 }
 
+.all {
+    background-color: transparent !important;
+    border: none !important;
+    color: black !important;
+    background-color: #e9ecef !important;
+    float: right;
+}
+.all:active:hover:focus {
+    outline: none !important;
+    border: none !important;
+    
+}
+
+
+
 
 
 

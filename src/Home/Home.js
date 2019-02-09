@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import { Nav, Navbar, NavbarBrand, Button, Jumbotron, Container} from 'reactstrap'
+import { Jumbotron, Container} from 'reactstrap'
 
 export default class Home extends Component {
     constructor(props) {

@@ -1,5 +1,5 @@
 import React, {Component } from 'react';
-import {Button, Form, FormGroup, Label, Input, Modal, ModalBody, ModalHeader} from 'reactstrap';
+import {Button, Form, FormGroup, Label, Modal, ModalBody, ModalHeader} from 'reactstrap';
 import "../CSSstuff/update.css";
 export default class Update extends Component {
     constructor(props) {
@@ -11,7 +11,7 @@ export default class Update extends Component {
         }
     };
 
-    handleChange = (event) => {
+    handleChange = (event) => { 
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -19,7 +19,7 @@ export default class Update extends Component {
     }
 
     handleSubmit = (event) => {
-        console.log(this.state.content)
+        // console.log(this.state.content)
         event.preventDefault();
         this.props.sendUpdate(event, this.state)
     }
