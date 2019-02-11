@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import "../CSSstuff/posts.css";
 import {Form, FormGroup, Label, Input, Container, Row, Col, Button} from 'reactstrap';
+import APIURL from "../helpers/environment";
 
 class Posts extends Component {
     constructor(props) {
@@ -22,7 +23,7 @@ class Posts extends Component {
 
     drafting = (event) => {
         console.log(this.props.sessionToken)
-        fetch(`http://localhost:4000/draft/new`, {
+        fetch(`${APIURL}/draft/new`, {
             method: 'POST',
             body: JSON.stringify(this.state),
             headers: new Headers({
@@ -43,7 +44,7 @@ class Posts extends Component {
     }
 
     postIt = (event) => {
-        fetch(`http://localhost:4000/blog/new`, {
+        fetch(`${APIURL}/blog/new`, {
             method: 'POST',
             body: JSON.stringify(this.state),
             headers: new Headers({

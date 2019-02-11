@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import DisplayDrafts from './DisplayDrafts';
 import Update from './Update';
 import DeleteDraft from './DeleteDraft';
+import APIURL from "../helpers/environment";
 
 export default class GetDrafts extends Component {
     constructor(props){
@@ -20,7 +21,7 @@ export default class GetDrafts extends Component {
      }
 
     handleDraft = (event) => {
-        fetch("http://localhost:4000/draft/getall", {
+        fetch(`${APIURL}/draft/getall`, {
             method: 'GET',
             headers: new Headers ({
                 'Content-Type': 'application/json',
@@ -57,7 +58,7 @@ export default class GetDrafts extends Component {
 
             sendUpdate = (event, post) => {
                 // console.log("All the things!!")
-                fetch(`http://localhost:4000/draft/update/${post.id}`, {
+                fetch(`${APIURL}/draft/update/${post.id}`, {
                     method: 'PUT',
                     body: JSON.stringify(post),
                     headers: new Headers({
@@ -72,7 +73,7 @@ export default class GetDrafts extends Component {
             }
 
         deletePost = (event, id) => {
-            fetch(`http://localhost:4000/draft/delete/${id}`, {
+            fetch(`${APIURL}/draft/delete/${id}`, {
                 method: 'DELETE',
                 body: JSON.stringify({id: id} ),
                 headers: new Headers ({
@@ -89,7 +90,7 @@ export default class GetDrafts extends Component {
         }
 
         postIt = (event, post) => {
-            fetch(`http://localhost:4000/blog/new`, {
+            fetch(`${APIURL}/blog/new`, {
                 method: 'POST',
                 body: JSON.stringify(post),
                 headers: new Headers({

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DisplayPosts from '../Posts/DisplayPosts'
+import APIURL from "../helpers/environment";
 
 
 export default class GetPosts extends Component {
@@ -16,7 +17,7 @@ componentWillMount() {
 }
 
 getPosts = (event) => {
-    fetch(`http://localhost:4000/blog/getall`, {
+    fetch(`${APIURL}/blog/getall`, {
         method: 'GET', 
         headers: new Headers ({
             'Authorization': this.props.sessionToken
