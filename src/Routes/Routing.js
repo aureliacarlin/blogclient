@@ -9,6 +9,7 @@ import "../CSSstuff/routing.css";
 import { Navbar, Button, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, UncontrolledDropdown } from 'reactstrap'
 import TokenCheck from '../Drafts/TokenCheck'
 import Home from '../Home/Home'
+import TokenChecks from '../Posts/TokenChecks'
 import GetPosts from '../Posts/GetPosts'
 
     
@@ -95,7 +96,7 @@ class Routing extends Component {
                 </DropdownToggle>
                 <DropdownMenu right>
                 <Link to="/check"><DropdownItem>Drafts</DropdownItem></Link>
-                        <DropdownItem href="/post">Start Writing!</DropdownItem>
+                        <Link to="/checks"><DropdownItem>Start Writing!</DropdownItem></Link>
                         <DropdownItem href="/signin">Sign In</DropdownItem>
                         <DropdownItem onClick={this.logout}>Log Out</DropdownItem>
                 </DropdownMenu>
@@ -124,7 +125,7 @@ class Routing extends Component {
           <Route exact path="/"><Home /></Route>
           <Route exact path="/allposts"><GetPosts sessionToken={this.state.sessionToken}/></Route>
           <Route exact path="/check"><TokenCheck sessionToken={this.state.sessionToken} /></Route>
-          <Route exact path="/post"><Posts sessionToken={this.state.sessionToken}/></Route>
+          <Route exact path="/checks"><TokenChecks sessionToken={this.state.sessionToken}/></Route>
           <Route exact path="/signin"><SignIn theToken={this.setSessionState} /></Route>
       </Switch>
             </div>
