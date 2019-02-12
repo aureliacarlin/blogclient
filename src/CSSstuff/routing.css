@@ -14,7 +14,7 @@
      background-color: #e9ecef; 
 }
 
-.home {
+/* .home {
     background-color: plum;
     height: 50px;
     width: 50px;
@@ -25,6 +25,10 @@
 .home:hover{
     
     background-color: rgb(156, 103, 153);
+} */
+
+.logo {
+    border-radius: 100%;
 }
 
 .home:focus {
